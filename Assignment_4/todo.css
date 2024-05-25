@@ -1,0 +1,21 @@
+.bg-image{
+    background-image: url(https://ik.imagekit.io/4z8covdo9/Full%20stack/todolistbg.png?updatedAt=1700761069523);
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 300px;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.heading,.sub-heading{
+    text-align: center;
+}
+.btn{
+    text-align: center;
+    margin-left: 40%;
+    background-color: #FFA61D;
+}
+.link{
+    text-align: center;
+    text-decoration-line: underline;
+}
