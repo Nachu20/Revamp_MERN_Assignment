@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="m-9 p-3 text-center bg-[#DD93B9] w-[300px] h-[300px]">
+        <h1 class="text-white mb-6 text-[22px]">Update Password</h1>
+        <form id="updatePasswordForm">
+            <label for="new_pass" class="text-[13px]">New Password</label><br>
+            <input type="password" id="new_pass"><br>
+            <span id="newPasswordErrMsg" class="text-[13px] text-red-500"></span><br>
+            <label for="con_pass" class="text-[13px]">Confirm Password</label><br>
+            <input type="password" id="con_pass"><br>
+            <span id="confirmPasswordErrMsg" class="text-[13px] text-red-500"></span><br>
+            <button type="submit" id="bt1" class="m-8 rounded-lg bg-[#007AF7] text-white p-2">Update</button>
+        </form>
+    </div>
+
+    <script>
+        function validatePasswords() {
+            let np = document.getElementById("new_pass").value;
+            let cp = document.getElementById("con_pass").value;
+            let err1 = document.getElementById("newPasswordErrMsg");
+            let err2 = document.getElementById("confirmPasswordErrMsg");
+
+            let valid = true;
+
+            err1.textContent = "";  
+            err2.textContent = "";  
+
+            if (np === '') {
+                err1.textContent = "*required";
+                valid = false;
+            }
+
+            if (cp === '') {
+                err2.textContent = "*required";
+                valid = false;
+            }
+
+            if (np !== '' && cp !== '' && np !== cp) {
+                err2.textContent = "Password should match";
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        document.getElementById("new_pass").addEventListener("blur", () => {
+            let np = document.getElementById("new_pass").value;
+            let err1 = document.getElementById("newPasswordErrMsg");
+            if (np === '') {
+                err1.textContent = "*required";
+            } else {
+                err1.textContent = "";
+            }
+        });
+
+        document.getElementById("con_pass").addEventListener("blur", () => {
+            let cp = document.getElementById("con_pass").value;
+            let err2 = document.getElementById("confirmPasswordErrMsg");
+            if (cp === '') {
+                err2.textContent = "*required";
+            } else {
+                err2.textContent = "";
+            }
+        });
+
+        document.getElementById("updatePasswordForm").addEventListener("submit", (event) => {
+            if (!validatePasswords()) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
