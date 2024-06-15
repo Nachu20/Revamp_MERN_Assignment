@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Listing From the Bacon API
+    <div id="cont">
+        <ul id="lst"></ul>
+    </div>
+    <button id="bt1">Update</button>
+    <script>
+        const fetchData=async ()=>{
+            const res= await fetch("https://baconipsum.com/api/?type=all");
+            const arr=await res.json()
+            display(arr);
+        }
+        const display = (items) => {
+            const listContainer = document.getElementById('lst');
+            items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                listContainer.appendChild(listItem);
+            });
+        };
+        document.getElementById("bt1").addEventListener("click",()=>{
+           location.reload();
+        })
+        fetchData();
+    </script>
+</body>
+</html>
