@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Listing From the Bacon API
+    <div id="cont">
+        <ul id="lst"></ul>
+    </div>
+    <button id="bt1">Update</button>
+    <script>
+        const fetchData=()=>{
+            const res=fetch("https://baconipsum.com/api/?type=all");
+            res.then((res)=>{
+                return res.json(); 
+            }).then((data)=>{
+                const items=data;
+                display(items)
+            }).catch((e)=>{
+                console.log(e,"Error in api")
+            })
+        }
+        const display = (items) => {
+            const listContainer = document.getElementById('lst');
+            items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                listContainer.appendChild(listItem);
+            });
+        };
+        document.getElementById("bt1").addEventListener("click",()=>{
+           location.reload();
+        })
+        fetchData();
+    </script>
+</body>
+</html>
